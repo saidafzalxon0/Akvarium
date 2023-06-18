@@ -7,20 +7,20 @@ public class Main {
     public static void main(String[] args) {
 
         Random random = new Random();
-        AtomicInteger atomicInteger = new AtomicInteger(1);
+        int count = 1;
         boolean bool;
         int maleFishCount = random.nextInt(5) + 1;
         int femaleFishCount = random.nextInt(5) + 1;
 
         Aquarium aquarium = new Aquarium();
         for (int i = 1; i <= maleFishCount; i++) {
-            Fish fish = new Fish("Male Fish " + atomicInteger.getAndIncrement(), true);
+            Fish fish = new Fish("Male Fish " + count++, true);
             FishThread fishThread = new FishThread(fish, aquarium);
             fishThread.start();
         }
 
         for (int i = 1; i <= femaleFishCount; i++) {
-            Fish fish = new Fish("Female Fish " + atomicInteger.getAndIncrement(), false);
+            Fish fish = new Fish("Female Fish " + count++, false);
             FishThread fishThread = new FishThread(fish, aquarium);
             fishThread.start();
         }
@@ -31,9 +31,9 @@ public class Main {
             if(aquarium.getFish(random.nextInt(aquarium.getFishCount())).isMale() != aquarium.getFish(random.nextInt(aquarium.getFishCount())).isMale()){
                 bool = random.nextBoolean();
                 if(bool){
-                    fish = new Fish("Male Fish to be born " + atomicInteger.getAndIncrement(), true);
+                    fish = new Fish("Male Fish to be born " + count++, true);
                 }else{
-                    fish = new Fish("Female Fish to be born " + atomicInteger.getAndIncrement(), false);
+                    fish = new Fish("Female Fish to be born " + count++, false);
                 }
                 FishThread fishThread = new FishThread(fish, aquarium);
                 fishThread.start();
