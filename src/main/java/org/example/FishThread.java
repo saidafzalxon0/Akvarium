@@ -17,7 +17,7 @@ class FishThread extends Thread {
     public void run() {
         try {
             aquarium.addFish(fish);
-            System.out.println(fish.getName() + " started swimming.");
+            System.out.println(fish.getName()+  " started swimming. cortinate X " + fish.getA() + " cortinate Y " + fish.getB());
             Thread.sleep(random.nextInt(5000) + 1000);
             System.out.println(fish.getName() + " finished swimming.");
             aquarium.removeFish(fish);
